@@ -1,6 +1,6 @@
 // Типизация данных
 
-interface IProduct {
+export interface IProduct {
   id: string;
 	description: string;
   image: string;
@@ -9,16 +9,16 @@ interface IProduct {
 	price: number;
 }
 
-type paymentType = "online" | "offline";
+export type paymentType = "online" | "offline";
 
-interface IUserData {
+export interface IUserData {
   payment?: paymentType;
   address?: string;
   email?: string;
   phone?: string;
 }
 
-interface IOrder extends IUserData {
+export interface IOrder extends IUserData {
 	items: IProduct[];
 }
 
@@ -26,7 +26,6 @@ export interface IOrderResult {
 	id: string;
 }
 
-// Перечисление модальных окон
 export enum AppStateModals {
 	item = 'modal:item',
 	basket = 'modal:basket',
@@ -36,7 +35,6 @@ export enum AppStateModals {
 	none = 'modal:none',
 }
 
-// Тип данных для модели данных - состояния приложения
 export interface IAppState {
   catalog: IProduct[]; 
   preview: string | null;

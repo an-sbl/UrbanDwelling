@@ -110,7 +110,7 @@ export interface IEvents {
 Класс для работы с сервером наследует базовый класс `Api` и реализуется интерфейсом `ILarekAPI`. 
 
 ```tsx
-export interface IAuctionAPI {
+export interface ILarekAPI {
     getProductList: () => Promise<IProduct[]>; // Получение каталога товаров
     getProductItem: (id: string) => Promise<IProduct>; // Получение описания товара
     orderItems: (order: IOrder) => Promise<IOrderResult>; // Оформление заказа
@@ -244,7 +244,7 @@ interface IModal {
 Реализация форм. Класс наследует абстрактнымй класс `Component<T>` с интерфейсом `IForm`.
 
 ```tsx
-interface IFormState {
+interface IForm {
     valid: boolean;
     errors: string[];
 }

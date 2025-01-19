@@ -6,13 +6,13 @@ export interface IProduct {
   image: string;
   title: string;
 	category: string;
-	price: number;
+	price: number | null;
 }
 
 export type paymentType = "online" | "offline";
 
 export interface IUserData {
-  payment?: paymentType;
+  payment?: paymentType | null;
   address?: string;
   email?: string;
   phone?: string;
@@ -38,8 +38,7 @@ export enum AppStateModals {
 export interface IAppState {
   catalog: IProduct[]; 
   preview: string | null;
-  basket: string[]; 
-  basketTotal: number; 
+  // basketTotal: number; 
   order: IOrder | null;
   validationError: string | null;
 }

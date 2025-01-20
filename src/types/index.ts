@@ -7,12 +7,12 @@ export interface IProduct {
   title: string;
 	category: string;
 	price: number | null;
+  valid?:boolean
 }
 
-export type paymentType = "online" | "offline";
 
 export interface IUserData {
-  payment?: paymentType | null;
+  payment?: string | null;
   address?: string;
   email?: string;
   phone?: string;
@@ -20,6 +20,11 @@ export interface IUserData {
 
 export interface IOrder extends IUserData {
 	items: IProduct[];
+}
+
+export interface IOrderAPI extends IUserData {
+	items: string[];
+  total: number;
 }
 
 export interface IOrderResult {

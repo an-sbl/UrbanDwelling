@@ -10,6 +10,14 @@ interface ICard {
   price: number;
 }
 
+const categoryColor = <Record<string, string>> { 
+    "софт-скил": '_soft',
+    "другое": '_other', 
+    "дополнительное": '_additional',
+    "кнопка": '_button',
+    "хард-скил": '_hard',
+    };
+
 interface ICardActions {
   onClick: (event: MouseEvent) => void;
 }
@@ -21,6 +29,7 @@ export class CardCatalog extends Component<ICard> {
   protected _button?: HTMLButtonElement;
   protected _price?: HTMLElement;
   protected _category?: HTMLElement;
+  protected _categoryColor = categoryColor;
 
   constructor(protected blockName: string, container: HTMLElement, actions?: ICardActions) {
       super(container);
@@ -49,6 +58,7 @@ export class CardCatalog extends Component<ICard> {
 
   set category(value: string) {
     this.setText(this._category, value);
+    this.toggleClass(this._category, `card__category${this._categoryColor[value]}` , true);
 }
 
     get category(): string {
@@ -67,7 +77,12 @@ export class CardCatalog extends Component<ICard> {
   }
   
   set price(value: string) {
-    this.setText(this._price, value + " синапсов");
+    if(value){
+        this.setText(this._price, value + " синапсов");
+    }
+    else{
+        this.setText(this._price, "Бесценно");
+    }
 }
 }
 
@@ -78,6 +93,7 @@ export class CardPreview extends Component<IProduct> {
   protected _price?: HTMLElement;
   protected _category?: HTMLElement;
   protected _button: HTMLButtonElement;
+  protected _categoryColor = categoryColor;
 
 
     constructor(protected blockName: string, container: HTMLElement, actions?: ICardActions) {
@@ -121,17 +137,27 @@ export class CardPreview extends Component<IProduct> {
     }
     set category(value: string) {
         this.setText(this._category, value);
+        this.toggleClass(this._category, `card__category${this._categoryColor[value]}` , true);
     }
   
     get category(): string {
         return this._category.textContent || '';
     }
     set price(value: string) {
-        this.setText(this._price, value + " синапсов");
+        if(value){
+            this.setText(this._price, value + " синапсов");
+        }
+        else{
+            this.setText(this._price, "Бесценно");
+        }
     }
   
     get price(): string {
         return this._price.textContent || '';
+    }
+
+    set valid(value: boolean){
+        this._button.disabled = !value;
     }
     
 }

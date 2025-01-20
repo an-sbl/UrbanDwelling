@@ -1,7 +1,6 @@
 import {Component} from "../base/Component";
 import {IEvents} from "../base/events";
 import {ensureElement} from "../../utils/utils";
-
 interface IForm {
   valid: boolean;
   errors: string[];

@@ -6,10 +6,11 @@ import {createElement, ensureElement} from "../../utils/utils";
 interface IBasket {
   items: HTMLElement[];
   total: number;
+  valid: boolean;
 }
 
 interface ICardBasket {
-  id: string;
+  index: number;
   title: string;
 price: number;
 }
@@ -31,7 +32,7 @@ export class Basket extends Component<IBasket> {
 
         if (this._button) {
             this._button.addEventListener('click', () => {
-                events.emit('order:open');
+                events.emit('delivery:open');
             });
         }
 
@@ -48,16 +49,16 @@ export class Basket extends Component<IBasket> {
         }
     }
 
-    // set selected(items: string[]) {
-    //     if (items.length) {
-    //         this.setDisabled(this._button, false);
-    //     } else {
-    //         this.setDisabled(this._button, true);
-    //     }
-    // }
-
     set total(total: number) {
-        this.setText(this._total, `${total} синапсов`);
+        if(total === 0){
+            this.setText(this._total, `Очень много синапсов`);
+        }
+        else{
+            this.setText(this._total, `${total} синапсов`);
+        }
+    }
+    set valid(value:boolean){
+        this._button.disabled = !value;
     }
 }
 
@@ -96,10 +97,15 @@ export class CardBasket extends Component<ICardBasket> {
     }
   
     set price(value: string) {
-      this.setText(this._price, value + " синапсов");
+        if(value){
+            this.setText(this._price, value + " синапсов");
+        }
+        else{
+            this.setText(this._price, "Бесценно");
+        }
   }
   
-    set index(value: string) {
+    set index(value: number) {
     this.setText(this._index, value);
 }
 }

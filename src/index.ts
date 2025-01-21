@@ -71,6 +71,7 @@ events.on('preview:changed', (data: { item: ProductItem, isInBasket: boolean}) =
             content: card.render({
                 title: item.title,
                 image: item.image,
+                description: item.description,
                 category: item.category,
                 price: item.price,
                 valid: data.isInBasket

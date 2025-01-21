@@ -89,9 +89,9 @@ yarn build
 Реализован интерфейсом `IEvents`
 ```tsx
 export interface IEvents {
-    on<T extends object>(event: EventName, callback: (data: T) => void): void;
-    emit<T extends object>(event: string, data?: T): void;
-    trigger<T extends object>(event: string, context?: Partial<T>): (data: T) => void;
+  on<T extends object>(event: EventName, callback: (data: T) => void): void;
+  emit<T extends object>(event: string, data?: T): void;
+  trigger<T extends object>(event: string, context?: Partial<T>): (data: T) => void;
 }
 ```
 
@@ -111,9 +111,9 @@ export interface IEvents {
 
 ```tsx
 export interface ILarekAPI {
-    getProductList: () => Promise<IProduct[]>; // Получение каталога товаров
-    getProductItem: (id: string) => Promise<IProduct>; // Получение описания товара
-    orderItems: (order: IOrder) => Promise<IOrderResult>; // Оформление заказа
+  getProductList: () => Promise<IProduct[]>; // Получение каталога товаров
+  getProductItem: (id: string) => Promise<IProduct>; // Получение описания товара
+  orderItems: (order: IOrderAPI) => Promise<IOrderResult>; // Оформление заказа
 }
 ```
 
@@ -125,25 +125,19 @@ export interface ILarekAPI {
 ```tsx
 export interface IAppState {
   catalog: IProduct[]; 
-  preview: string | null;
-  basket: string[]; 
-  basketTotal: number; 
+  preview: string | null; 
   order: IOrder | null;
-  validationError: string | null;
 }
 ```
 Содержит методы:
-- `setCatalog` - установка товаров в каталог
-- `setPreview` - утановка товара в превью карточки
-- `addBasketItem` - добавить товар в корзину
-- `deleteBasketItem` - удалить товар из корзины
-- `clearBasket`- очистить корзину
-- `getBasket` - получить данные товаров из корзины
-- `addOrderItem` - добавить товар в заказ
-- `deleteOrderItem` - удалить товар из заказа
+- `setCatalog(items: IProduct[])` - установка товаров в каталог
+- `ssetPreview(item: IProduct)` - утановка товара в превью карточки
+- `addCardToOrder(item:ProductItem)` - добавить товар в корзину/заказ
+- `deleteCardFromOrder(item:ProductItem)` - удалить товар из корзины/заказа
+- `clearBasket()`- очистить корзину
+- `getOrderItemsId()` - получить идентификаторы товаров из заказа
 - `getTotal` - получение общей стоимости корзины
-- `fillDelivery` - заполнить форму с данными доставки
-- `fillContacts` - заполнить форму с данными контактов
+- `setInputField` - заполнить данный заказа (способ оплаты, адрес, email, телефон) из формы ввода
 - `validateDelivery` - проверить валидность формы с данными доставки
 - `validateContacts` - проверить валидность формы с данными контактов
   
@@ -171,9 +165,9 @@ interface IProduct {
 
 ```tsx
 interface IPage {
-    counter: number;
-    catalog: HTMLElement[];
-    locked: boolean;
+  counter: number;
+  catalog: HTMLElement[];
+  locked: boolean;
 }
 ```
 Содержит методы:
@@ -183,20 +177,20 @@ interface IPage {
 
 
 **2. Класс `Card`**
-Отображение карточки товара в каталоге. Класс наследует класс `Component<T>` с интерфейсом `ICard`.
+Отображение карточки товара в каталоге. Класс наследует класс `Component<T>` с интерфейсом `IProduct`.
 
 ```tsx
-interface ICard {
-    id: string;
-    image: string;
-    title: string;
-    category: string;
-    price: number;
+interface IProduct {
+  id: string;
+	description: string;
+  image: string;
+  title: string;
+	category: string;
+	price: number;
 }
 ```
 Содержит методы:
-- `get id` — установка id товара каталога
-- `get id` — получение id товара каталога
+- `set id` — установка id товара каталога
 - `set title` — установка наименования товара каталога
 - `set category` — установка категории товара каталога
 - `set image` — установка цены картинки товара каталога
@@ -216,8 +210,7 @@ interface IProduct {
 }
 ```
 Содержит методы:
-- `get id` — установка id товара каталога
-- `get id` — получение id товара каталога
+- `set id` — установка id товара каталога
 - `set title` — установка наименования товара каталога
 - `set description` — установка описания товара каталога
 - `set category` — установка категории товара каталога
@@ -231,22 +224,22 @@ interface IProduct {
 
 ```tsx
 interface IModal {
-    content: HTMLElement;
+  content: HTMLElement;
 }
 ```
 Содержит методы:
 - `set content` — заподнение модального окна контентом
 - `open` — открыть модальное окно
 - `close` — закрыть модальное окно
-- `render` — рендеринг модального окна м заполненными данными
+- `render` — рендеринг модального окна c заполненными данными
 
 **5. Класс `Form<T>`**
 Реализация форм. Класс наследует абстрактнымй класс `Component<T>` с интерфейсом `IForm`.
 
 ```tsx
 interface IForm {
-    valid: boolean;
-    errors: string[];
+  valid: boolean;
+  errors: string[];
 }
 ```
 Содержит методы:
@@ -289,7 +282,7 @@ interface IUserData {
 
 ```tsx
 interface ISuccess {
-    total: number;
+  total: number;
 }
 ```
 Содержит методы:
@@ -300,8 +293,8 @@ interface ISuccess {
 
 ```tsx
 interface IBasket {
-    items: HTMLElement[];
-    total: number;
+  items: HTMLElement[];
+  total: number;
 }
 ```
 Содержит методы:
@@ -313,13 +306,13 @@ interface IBasket {
 
 ```tsx
 interface ICardBasket {
-    id: string;
-    title: string;
+  id: string;
+  title: string;
 	price: number;
 }
 ```
 Содержит методы:
 - `set title` — установка наименования товара корзины
 - `set price` — установка цены товара корзины
-- `get id` — установка id товара корзины
-- `get id` — получение id товара корзины
+- `set id` — установка id товара корзины
+- `set index` — установка номера товара в корзине

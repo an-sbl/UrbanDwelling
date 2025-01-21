@@ -1,7 +1,7 @@
 import {IUserData} from "../types";
 import {Form} from "./common/Form";
-import { IEvents} from "./base/events";
-import { ensureAllElements } from "../utils/utils";
+import {IEvents} from "./base/events";
+import {ensureAllElements } from "../utils/utils";
 
 export class Delivery extends Form<IUserData> {
 
@@ -13,7 +13,6 @@ export class Delivery extends Form<IUserData> {
 
     this._buttons.forEach(button => {
       button.addEventListener('click', () => {
-        //this.payment = button.name; 
         events.emit('payment:set', button)
       });
   })

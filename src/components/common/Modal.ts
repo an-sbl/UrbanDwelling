@@ -5,7 +5,9 @@ import {IEvents} from "../base/events";
 interface IModal {
   content: HTMLElement;
 }
+
 export class Modal extends Component<IModal> {
+    
   protected _closeButton: HTMLButtonElement;
   protected _content: HTMLElement;
 

@@ -10,16 +10,17 @@ interface IBasket {
 }
 
 interface ICardBasket {
-  index: number;
-  title: string;
-price: number;
+    index: number;
+    title: string;
+    price: number;
 }
+
 interface ICardBasketActions {
-  onClick: (event: MouseEvent) => void;
+    onClick: (event: MouseEvent) => void;
 }
 
 export class Basket extends Component<IBasket> {
-  protected _list: HTMLElement;
+    protected _list: HTMLElement;
     protected _total: HTMLElement;
     protected _button: HTMLButtonElement;
 
@@ -50,12 +51,7 @@ export class Basket extends Component<IBasket> {
     }
 
     set total(total: number) {
-        if(total === 0){
-            this.setText(this._total, `Очень много синапсов`);
-        }
-        else{
-            this.setText(this._total, `${total} синапсов`);
-        }
+        this.setText(this._total, `${total} синапсов`);
     }
     set valid(value:boolean){
         this._button.disabled = !value;
@@ -63,10 +59,10 @@ export class Basket extends Component<IBasket> {
 }
 
 export class CardBasket extends Component<ICardBasket> {
-  protected _title: HTMLElement;
+    protected _title: HTMLElement;
     protected _price?: HTMLElement;
-  protected _index: HTMLElement;
-  protected _button?: HTMLButtonElement;
+    protected _index: HTMLElement;
+    protected _button?: HTMLButtonElement;
 
   
     constructor(protected blockName: string, container: HTMLElement, actions?: ICardBasketActions) {
@@ -88,10 +84,7 @@ export class CardBasket extends Component<ICardBasket> {
     set id(value: string) {
         this.container.dataset.id = value;
     }
-  
-    get id(): string {
-        return this.container.dataset.id || '';
-    }
+
     set title(value: string) {
         this.setText(this._title, value);
     }
@@ -103,9 +96,9 @@ export class CardBasket extends Component<ICardBasket> {
         else{
             this.setText(this._price, "Бесценно");
         }
-  }
+    }
   
     set index(value: number) {
-    this.setText(this._index, value);
-}
+        this.setText(this._index, value);
+    }
 }

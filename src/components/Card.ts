@@ -46,8 +46,8 @@ export class CardCatalog extends Component<IProduct> {
 
   set category(value: string) {
     this.setText(this._category, value);
-    this.toggleClass(this._category, `card__category${this._categoryColor[value]}` , true);
-}
+    this._category.className =`card__category card__category${this._categoryColor[value]}`;
+    }
 
   set title(value: string) {
       this.setText(this._title, value);
@@ -108,7 +108,8 @@ export class CardPreview extends Component<IProduct> {
 
     set category(value: string) {
         this.setText(this._category, value);
-        this.toggleClass(this._category, `card__category${this._categoryColor[value]}` , true);
+        this._category.className =`card__category card__category${this._categoryColor[value]}`;
+        
     }
 
     set price(value: string) {

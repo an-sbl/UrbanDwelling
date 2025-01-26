@@ -36,8 +36,7 @@ function createItem(link, name, prices){
       name: "Встраиваемый светильник Markt",
       link: "img/recessed_lightMARKT.png",
       prices: ["3 490", "6 660"]
-    },
-    {
+    },{
       name: "Линейный светильник ARG",
       link: "img/linear_lightARG(dark).png",
       prices: ["6 700"]

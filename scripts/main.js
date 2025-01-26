@@ -34,7 +34,7 @@ function createItem(link, name, prices){
   const cardItems = [
     {
       name: "Встраиваемый светильник Markt",
-      link: "../img/recessed_lightMARKT.png",
+      link: "img/recessed_lightMARKT.png",
       prices: ["3 490", "6 660"]
     },
     {

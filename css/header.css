@@ -32,7 +32,7 @@
 }
 
 .header__logo {
-  min-width: 217px;
+  width: 217px;
   cursor: pointer;
 }
 .header__logo-image {

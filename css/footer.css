@@ -1,0 +1,153 @@
+/* Footer */
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 393px 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+  "logo address service legal"
+  "notification contacts service payment";
+  background: #0C0C0C;
+  color: #F5F5F5;
+  padding: 60px clamp(180px, -13.75rem + 25vw, 260px);
+} 
+
+.footer__logo {
+  grid-area: logo;
+}
+
+.footer__address{
+  grid-area: address;
+  display: flex;
+  flex-direction: column;
+margin-left: 100px;
+}
+
+.footer__contacts{
+  grid-area: contacts;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  
+}
+.footer__contacts-list{
+  display: flex;
+  flex-direction: column;
+  gap:25px;
+}
+
+.footer__contacts-link {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #f5f5f5;
+}
+
+.footer__title {
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 18px
+}
+
+.footer__text {
+  font-weight: 400;
+  font-family: "Lato";
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.footer__service{
+  grid-area: service;
+  justify-self: center;
+}
+
+.footer__nav-items{
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer__legal{
+  grid-area: legal;
+  justify-self: flex-end;
+}
+
+.footer__legal-list{
+  display: flex;
+  gap:20px;
+  flex-direction: column;
+  align-items: end;
+  flex-wrap: nowrap;
+}
+
+
+.footer__payment{
+  grid-area: payment;
+  display: flex;
+  justify-self: self-end;
+  gap:33px;
+}
+
+.footer__payment-items{
+  display: flex;
+  gap:33px;
+}
+
+.footer__payment-items {
+  align-items: center;
+  margin: 0;
+}
+
+.footer__notification {
+  grid-area: notification;
+  display: inline;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #808080;
+}
+
+.footer__link {
+  color: #808080;
+}
+
+.footer__notification-link {
+  text-decoration: underline;
+}
+
+.footer__contact {
+  flex-direction: column;
+  max-width: 246px;
+  color: #fff;
+  gap: 40px;
+}
+
+
+.footer__title {
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 18px
+}
+
+.footer__text {
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 150%;
+  color: #f5f5f5;
+}
+
+.footer__payment-item {
+  transition: transform .3s ease-in-out;
+}
+
+.footer__payment-item:hover {
+  transform: scale(1.1);
+}

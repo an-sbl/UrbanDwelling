@@ -1,0 +1,119 @@
+@import url('fonts.css');
+@import url('cards.css');
+@import url('header.css');
+@import url('footer.css');
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --gap: 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input {
+  color: currentColor;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+span {
+  display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+
+}
+
+.page{
+  min-width: 390px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background-color: #FFFFFD;
+}
+
+/* Main-section */
+.main {
+  padding: 60px clamp(180px, -13.75rem + 25vw, 260px);
+}
+
+.main__title {
+  margin-bottom: 40px;
+  font-family: 'Korataki';
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 61.6px;
+  color: #231815;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(287px, 1fr));
+  gap:clamp(30px, -1.25rem + 3.125vw,40px);
+  flex-wrap: wrap;
+}
+
